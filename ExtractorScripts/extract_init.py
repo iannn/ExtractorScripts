@@ -11,6 +11,11 @@ Before the upgrade salvage profit can be computer, the following needs to be sor
 The purpose of this script is to create the organized database
 Some items have salvaging restrictions so the infinite extractor is needed for some
 This initial pass will not have infinite upgrade extractor items included
+
+Cassandra require Java - ew
+Mongo requires running a db service or shell instance and defaults clout stuff - no
+sqlite - most basic, built-in db option
+write to csv???? weapon/armour/trinket (/rune/sigil) are different csv files???
 """
 
 """
@@ -53,4 +58,41 @@ Iterate over list of ids doing the following:
 Close anything that needs to be closed
 Fin. Databases should be ready to use by other scripts now
 
+"""
+##Begin Imports
+
+#Import GW2 API
+from gw2api import GuildWars2Client
+gw2_client = GuildWars2Client()
+
+#Import "database" driver
+import csv
+
+##End Imports
+
+#Get the big list of items from gw2api
+gw2_allitems = gw2_client.items.get()
+
+#Keys to write
+#commit to full csv for now. ids only. Let the spreadsheet pull name
+keynames = ['id', 'name','type','suffix_item_id' ]
+
+##Big CSV writing loop
+
+"""open csv with paramaters
+open as write - 'w'
+set newline to avoid errors as per docs-  newline=''
+
+"""
+with open('UpgradeSalvageCandidates.csv', 'w', newline='') as csvfile:
+
+#write header
+#main writing loop
+#call next item from gw2_allitems from gw2_client
+#check for type and upgrade
+#write each passing item call to csv
+#details being a dictionary within a dictionary is a problem
+
+"""
+close csv
 """
