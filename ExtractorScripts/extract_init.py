@@ -66,6 +66,7 @@ Fin. Databases should be ready to use by other scripts now
 After some tests and looking on the forums, you can request 200 items at once
 I am concerned about api timeout because of spamming
 Processing 200 entries, a counter trigger I thought worked well not realizing it was the api limit is the way to go
+
 """
 ##Begin Imports
 
@@ -89,7 +90,7 @@ block_size = 200 #don't hard code the api block size
 gw2_allitems_blocks = [gw2_allitems[i:i+block_size] for i in range(0, len(gw2_allitems), block_size)]
 
 #purposefully sabotaging for testing
-gw2_allitems_blocks = [gw2_allitems_blocks[0], gw2_allitems_blocks[1]]
+# gw2_allitems_blocks = [gw2_allitems_blocks[0], gw2_allitems_blocks[1]]
 
 #Keys to write
 #commit to full csv for now. ids only. Let the spreadsheet pull name
